@@ -25,7 +25,6 @@ func get_input():
 			velocity.y = -1
 		
 		facing = velocity
-		
 
 # change the direction of the sprite appopriately
 func change_direction():
@@ -57,3 +56,7 @@ func _physics_process(delta):
 		animatedSprite.animation = "idle-up"
 	elif facing.y > 0:
 		animatedSprite.animation = "idle-down"
+
+
+func _on_breakice_deadpenguin():
+	hide()

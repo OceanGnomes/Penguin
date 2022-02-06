@@ -39,7 +39,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Penguin"
-run/main_scene="res://assets/scenes/Level 1.tscn"
+run/main_scene="res://assets/scenes/Level 1br.tscn"
 config/icon="res://icon.png"
 
 [autoload]
