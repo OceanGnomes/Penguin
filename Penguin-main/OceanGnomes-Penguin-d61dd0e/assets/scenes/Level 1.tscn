@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://assets/scenes/Penguin.tscn" type="PackedScene" id=1]
+
+[node name="Level 1" type="Node2D"]
+
+[node name="Penguin" parent="." instance=ExtResource( 1 )]
+position = Vector2( 322, 244 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PoolVector2Array( -2, -2, 1025, -1, 1031, 592, -2, 594, -2, 35, 73, 34, 68, 516, 955, 531, 959, 51, -2, 33 )
