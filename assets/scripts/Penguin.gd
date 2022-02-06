@@ -25,6 +25,7 @@ func get_input():
 			velocity.y = -1
 		
 		facing = velocity
+		
 
 # change the direction of the sprite appopriately
 func change_direction():
