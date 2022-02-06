@@ -1,7 +1,7 @@
 extends KinematicBody2D
 
 # penguin movement speed
-export (int) var speed = 1000
+export (int) var speed = 800
 
 # penguin velocity
 var velocity = Vector2()
@@ -39,6 +39,7 @@ func _physics_process(delta):
 	velocity = velocity.normalized() * speed
 
 	if move_and_collide(velocity * delta) != null:
+		global_translate(Vector2(-facing.x, -facing.y))
 		velocity = Vector2(0, 0)
 	
 	# check for sliding animation (in velocity)

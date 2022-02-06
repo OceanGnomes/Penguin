@@ -72,8 +72,12 @@ region = Rect2( 224, 0, 16, 16 )
 atlas = ExtResource( 4 )
 region = Rect2( 240, 0, 16, 16 )
 
-[sub_resource type="AtlasTexture" id=36]
-atlas = ExtResource( 5 )
+[sub_resource type="AtlasTexture" id=53]
+atlas = ExtResource( 7 )
+region = Rect2( 0, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=1]
+atlas = ExtResource( 1 )
 region = Rect2( 0, 0, 16, 16 )
 
 [sub_resource type="AtlasTexture" id=2]
@@ -140,14 +144,6 @@ region = Rect2( 224, 0, 16, 16 )
 atlas = ExtResource( 2 )
 region = Rect2( 240, 0, 16, 16 )
 
-[sub_resource type="AtlasTexture" id=1]
-atlas = ExtResource( 1 )
-region = Rect2( 0, 0, 16, 16 )
-
-[sub_resource type="AtlasTexture" id=53]
-atlas = ExtResource( 7 )
-region = Rect2( 0, 0, 16, 16 )
-
 [sub_resource type="AtlasTexture" id=37]
 atlas = ExtResource( 6 )
 region = Rect2( 0, 0, 16, 16 )
@@ -212,6 +208,10 @@ region = Rect2( 224, 0, 16, 16 )
 atlas = ExtResource( 6 )
 region = Rect2( 240, 0, 16, 16 )
 
+[sub_resource type="AtlasTexture" id=36]
+atlas = ExtResource( 5 )
+region = Rect2( 0, 0, 16, 16 )
+
 [sub_resource type="SpriteFrames" id=18]
 animations = [ {
 "frames": [ SubResource( 20 ), SubResource( 21 ), SubResource( 22 ), SubResource( 23 ), SubResource( 24 ), SubResource( 25 ), SubResource( 26 ), SubResource( 27 ), SubResource( 28 ), SubResource( 29 ), SubResource( 30 ), SubResource( 31 ), SubResource( 32 ), SubResource( 33 ), SubResource( 34 ), SubResource( 35 ) ],
@@ -219,14 +219,9 @@ animations = [ {
 "name": "idle-up",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 36 ) ],
+"frames": [ SubResource( 53 ) ],
 "loop": true,
-"name": "slide-up",
-"speed": 5.0
-}, {
-"frames": [ SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ), SubResource( 15 ), SubResource( 16 ), SubResource( 17 ) ],
-"loop": true,
-"name": "idle-side",
+"name": "slide-down",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 1 ) ],
@@ -234,20 +229,24 @@ animations = [ {
 "name": "slide-side",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 53 ) ],
+"frames": [ SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ), SubResource( 15 ), SubResource( 16 ), SubResource( 17 ) ],
 "loop": true,
-"name": "slide-down",
+"name": "idle-side",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 37 ), SubResource( 38 ), SubResource( 39 ), SubResource( 40 ), SubResource( 41 ), SubResource( 42 ), SubResource( 43 ), SubResource( 44 ), SubResource( 45 ), SubResource( 46 ), SubResource( 47 ), SubResource( 48 ), SubResource( 49 ), SubResource( 50 ), SubResource( 51 ), SubResource( 52 ) ],
 "loop": true,
 "name": "idle-down",
 "speed": 5.0
+}, {
+"frames": [ SubResource( 36 ) ],
+"loop": true,
+"name": "slide-up",
+"speed": 5.0
 } ]
 
-[sub_resource type="CapsuleShape2D" id=19]
-radius = 3.75
-height = 4.5
+[sub_resource type="CircleShape2D" id=54]
+radius = 7.5
 
 [node name="Penguin" type="KinematicBody2D"]
 scale = Vector2( 4, 4 )
@@ -259,9 +258,8 @@ __meta__ = {
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 18 )
 animation = "idle-down"
-frame = 6
+frame = 15
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 0.25, 1 )
-shape = SubResource( 19 )
+shape = SubResource( 54 )
