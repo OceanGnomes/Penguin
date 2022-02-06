@@ -1,7 +1,7 @@
 extends KinematicBody2D
 
 # penguin movement speed
-export (int) var speed = 1000
+export (int) var speed = 800
 
 # penguin velocity
 var velocity = Vector2()
@@ -17,11 +17,11 @@ func get_input():
 	if velocity == Vector2.ZERO:
 		if Input.is_action_pressed("right"):
 			velocity.x = 1
-		if Input.is_action_pressed("left"):
+		elif Input.is_action_pressed("left"):
 			velocity.x = -1	
-		if Input.is_action_pressed("down"):
+		elif Input.is_action_pressed("down"):
 			velocity.y = 1
-		if Input.is_action_pressed("up"):
+		elif Input.is_action_pressed("up"):
 			velocity.y = -1
 		
 		facing = velocity
@@ -39,6 +39,7 @@ func _physics_process(delta):
 	velocity = velocity.normalized() * speed
 
 	if move_and_collide(velocity * delta) != null:
+		global_translate(Vector2(-facing.x, -facing.y))
 		velocity = Vector2(0, 0)
 	
 	# check for sliding animation (in velocity)
@@ -56,7 +57,3 @@ func _physics_process(delta):
 		animatedSprite.animation = "idle-up"
 	elif facing.y > 0:
 		animatedSprite.animation = "idle-down"
-
-
-func _on_breakice_deadpenguin():
-	hide()

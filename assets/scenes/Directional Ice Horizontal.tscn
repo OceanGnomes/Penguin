@@ -1,0 +1,52 @@
+[gd_scene load_steps=5 format=2]
+
+[sub_resource type="GDScript" id=31]
+script/source = "extends StaticBody2D
+
+# called when the node enters the scene tree for the first time.
+func _ready():
+	get_node(\"CollisionIceBottom\").disabled = false
+	get_node(\"CollisionIceTop\").disabled = false
+
+func collision_manipulation():
+	var directon = get_parent().get_node(\"Penguin\").get(\"velocity\")
+	if directon.x != 0: 
+		get_node(\"CollisionIceBottom\").disabled = true
+		get_node(\"CollisionIceTop\").disabled = true
+	if directon.y != 0 && !get_node(\"Area2D\").overlaps_body(get_parent().get_node(\"Penguin\")):
+		get_node(\"CollisionIceBottom\").disabled = false
+		get_node(\"CollisionIceTop\").disabled = false
+
+# called every frame
+func _physics_process(_delta):
+	collision_manipulation()
+"
+
+[sub_resource type="RectangleShape2D" id=32]
+extents = Vector2( 128, 1 )
+
+[sub_resource type="RectangleShape2D" id=33]
+extents = Vector2( 128, 1 )
+
+[sub_resource type="RectangleShape2D" id=34]
+extents = Vector2( 128, 31.25 )
+
+[node name="Directional Ice Horizontal" type="StaticBody2D"]
+script = SubResource( 31 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionIceTop" type="CollisionShape2D" parent="."]
+position = Vector2( 512, 193 )
+shape = SubResource( 32 )
+
+[node name="CollisionIceBottom" type="CollisionShape2D" parent="."]
+position = Vector2( 512, 257 )
+shape = SubResource( 33 )
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionInside" type="CollisionShape2D" parent="Area2D"]
+position = Vector2( 512, 224.75 )
+shape = SubResource( 34 )
